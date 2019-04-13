@@ -1,0 +1,60 @@
+{
+    "name": "antidot-fw/phug-response-renderer",
+    "description": "Antidot Framework Phug template renderer library",
+    "keywords": [
+        "psr-11"
+    ],
+    "type": "library",
+    "license": "BSD-2-Clause",
+    "authors": [
+        {
+            "name": "kpicaza"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../template-renderer"
+        }
+    ],
+    "require": {
+        "php": "^7.2.13",
+        "pug/pug": "^0.2.0",
+        "antidot-fw/template-renderer": "@dev"
+    },
+    "require-dev": {
+        "phpro/grumphp": "^0.15.0",
+        "phpstan/phpstan": "^0.11.5",
+        "phpunit/phpunit": "^8.0",
+        "squizlabs/php_codesniffer": "^3.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Antidot\\Render\\Phug\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AntidotTest\\Render\\Phug\\": "test"
+        }
+    },
+    "scripts": {
+        "check-all": [
+            "@cs-check",
+            "@test",
+            "@inspect"
+        ],
+        "cs-check": "phpcs src --colors",
+        "cs-fix": "phpcbf src --colors",
+        "inspect": "phpstan analyse src -l7 --ansi",
+        "test": "phpunit --colors=always"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "zf": {
+            "config-provider": "Antidot\\Render\\Phug\\Container\\Config\\ConfigProvider"
+        }
+    }
+}
