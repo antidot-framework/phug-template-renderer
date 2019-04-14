@@ -11,16 +11,10 @@
             "name": "kpicaza"
         }
     ],
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../template-renderer"
-        }
-    ],
     "require": {
         "php": "^7.2.13",
         "pug/pug": "^0.2.0",
-        "antidot-fw/template-renderer": "@dev"
+        "antidot-fw/template-renderer": "dev-master"
     },
     "require-dev": {
         "phpro/grumphp": "^0.15.0",
