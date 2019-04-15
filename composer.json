@@ -1,5 +1,5 @@
 {
-    "name": "antidot-fw/phug-response-renderer",
+    "name": "antidot-fw/phug-template-renderer",
     "description": "Antidot Framework Phug template renderer library",
     "keywords": [
         "psr-11"
