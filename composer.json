@@ -14,7 +14,7 @@
     "require": {
         "php": "^7.2.13",
         "pug/pug": "^0.2.0",
-        "antidot-fw/template-renderer": "dev-master"
+        "antidot-fw/template-renderer": "^1.0.0"
     },
     "require-dev": {
         "phpro/grumphp": "^0.15.0",
