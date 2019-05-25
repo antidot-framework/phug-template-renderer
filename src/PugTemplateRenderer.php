@@ -80,6 +80,6 @@ class PugTemplateRenderer implements TemplateRenderer
      */
     public function addPath(string $path) : void
     {
-        $this->path = empty($path) ? self::DEFAULT_PATH : $path;
+        $this->path = $path ?: self::DEFAULT_PATH;
     }
 }
