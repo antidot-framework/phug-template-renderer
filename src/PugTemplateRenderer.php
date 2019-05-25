@@ -45,7 +45,7 @@ class PugTemplateRenderer implements TemplateRenderer
 
     private function setDefaultParams(array $defaultParams): void
     {
-        $this->globals = array_replace_recursive($this->globals, $defaultParams);
+        $this->globals = (array) array_replace_recursive($this->globals, $defaultParams);
     }
 
     /**
