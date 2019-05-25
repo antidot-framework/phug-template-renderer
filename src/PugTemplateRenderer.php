@@ -5,6 +5,7 @@ namespace Antidot\Render\Phug;
 use Antidot\Render\TemplateRenderer;
 use Pug\Pug;
 
+use function array_replace_recursive;
 use function array_merge_recursive;
 use function sprintf;
 use function str_replace;
@@ -44,14 +45,7 @@ class PugTemplateRenderer implements TemplateRenderer
 
     private function setDefaultParams(array $defaultParams): void
     {
-        foreach ($defaultParams as $name => $params) {
-            if (empty($this->globals[$name])) {
-                $this->globals[$name] = [];
-            }
-            foreach ($params as $param => $value) {
-                $this->globals[$name][$param] = $value;
-            }
-        }
+        $this->globals = array_replace_recursive($this->globals, $defaultParams);
     }
 
     /**
