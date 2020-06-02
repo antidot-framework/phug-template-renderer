@@ -69,7 +69,7 @@ class SomeHandler implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request) : ResponseInterface
     {
         return new HtmlResponse(
-            $this->template->render('index.pug', [
+            $this->template->render('index', [
                 'name' => 'Koldo ;-D',
             ])
         );
@@ -87,10 +87,9 @@ html
     body
         main
             section(class="container")
-                h1 Hello #{$name} 
+                h1 Hello #{name} 
 
     script(type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js")
-    script(type="text/javascript" src="/js/main.js")
     block scripts
 
 ```
