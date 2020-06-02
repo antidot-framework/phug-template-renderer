@@ -2,6 +2,7 @@
 
 namespace Antidot\Render\Phug\Container;
 
+use Antidot\Render\Phug\Container\Config\PugConfig;
 use Antidot\Render\Phug\PugTemplateRenderer;
 use Antidot\Render\TemplateRenderer;
 use Psr\Container\ContainerInterface;
@@ -11,16 +12,16 @@ class PugRendererFactory
 {
     public function __invoke(ContainerInterface $container): TemplateRenderer
     {
-        $config = $container->get('config');
+        $pugConfig = PugConfig::createFromAntidotConfig($container->get('config'));
 
         return new PugTemplateRenderer(
             $container->get(Pug::class),
-            $config['pug']['default_params'],
-            $config['pug']['globals'],
+            $pugConfig->get('default_params'),
+            $pugConfig->get('globals'),
             array_merge(
-                $config['templates'],
+                $pugConfig->templates(),
                 [
-                    'template_path' => $config['pug']['template_path']
+                    'template_path' => $pugConfig->get('template_path')
                 ]
             )
         );

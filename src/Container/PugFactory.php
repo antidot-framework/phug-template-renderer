@@ -2,6 +2,7 @@
 
 namespace Antidot\Render\Phug\Container;
 
+use Antidot\Render\Phug\Container\Config\PugConfig;
 use Psr\Container\ContainerInterface;
 use Pug\Pug;
 
@@ -15,27 +16,27 @@ final class PugFactory
 
     public function __invoke(ContainerInterface $container): Pug
     {
-        $config = $container->get('config')['pug'];
+        $pugConfig = PugConfig::createFromAntidotConfig($container->get('config'));
 
         $pug = new Pug([
-            'pugjs' => $config['pugjs'],
-            'localsJsonFile' => $config['localsJsonFile'],
-            'pretty' => $config['pretty'],
-            'cache' => $config['cache'],
-            'expressionLanguage' => $config['expressionLanguage'],
+            'pugjs' => $pugConfig->get('pugjs'),
+            'localsJsonFile' => $pugConfig->get('localsJsonFile'),
+            'pretty' => $pugConfig->get('pretty'),
+            'cache' => $pugConfig->get('cache'),
+            'expressionLanguage' => $pugConfig->get('expressionLanguage'),
         ]);
 
-        $this->addOns($pug, $container, $config);
+        $this->addOns($pug, $container, $pugConfig);
 
         return $pug;
     }
 
-    private function addOns(Pug $pug, ContainerInterface $container, array $config)
+    private function addOns(Pug $pug, ContainerInterface $container, PugConfig $config)
     {
         foreach (self::AVAILABLE_ADD_ONS as $method => $type) {
-            array_walk($config[$type], function ($callable, $name) use ($method, $pug, $container) {
+            foreach ($config->get($type) as $name => $callable) {
                 $pug->{$method}($name, is_callable($callable) ? $callable : $container->get($callable));
-            });
+            }
         }
     }
 }
