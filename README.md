@@ -24,7 +24,7 @@ See factory classes at `src/Container`.
 declare(strict_types=1);
 
 $config = [
-    'bug' => [
+    'pug' => [
         'pretty' => true,
         'expressionLanguage' => 'js',
         'pugjs' => false,
