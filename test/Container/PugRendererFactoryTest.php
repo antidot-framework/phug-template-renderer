@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace Antidot\Render\Phug\Container;
 
-use Antidot\Render\Phug\Container\Config\PugConfig;
 use Antidot\Render\TemplateRenderer;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
