@@ -1,5 +1,10 @@
 # Antidot Framework Phug Template Renderer
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/antidot-framework/phug-template-renderer/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/antidot-framework/phug-template-renderer/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/antidot-framework/phug-template-renderer/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/antidot-framework/phug-template-renderer/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/antidot-framework/phug-template-renderer/badges/build.png?b=master)](https://scrutinizer-ci.com/g/antidot-framework/phug-template-renderer/build-status/master)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/antidot-framework/phug-template-renderer/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+
 ## Install
 
 Using composer
