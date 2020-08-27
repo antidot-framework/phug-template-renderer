@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Antidot\Render\Phug\Container;
+namespace AntidotTest\Render\Phug\Container;
 
+use Antidot\Render\Phug\Container\PugFactory;
 use Antidot\Render\Phug\Container\Config\PugConfig;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
@@ -13,7 +14,7 @@ class PugFactoryTest extends TestCase
     /** @var \PHPUnit\Framework\MockObject\MockObject|ContainerInterface */
     private $container;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->container = $this->createMock(ContainerInterface::class);
         $this->container->expects($this->once())
@@ -29,7 +30,7 @@ class PugFactoryTest extends TestCase
         $this->assertEquals(PugConfig::DEFAULT_PUG_CONFIG['pugjs'], $pug->getOption('pugjs'));
         $this->assertEquals(PugConfig::DEFAULT_PUG_CONFIG['localsJsonFile'], $pug->getOption('localsJsonFile'));
         $this->assertEquals(PugConfig::DEFAULT_PUG_CONFIG['pretty'], $pug->getOption('pretty'));
-        $this->assertEquals(PugConfig::DEFAULT_PUG_CONFIG['cache'], $pug->getOption('cache'));
-        $this->assertEquals(PugConfig::DEFAULT_PUG_CONFIG['expressionLanguage'], $pug->getOption('expressionLanguage'));
+        $this->assertSame(PugConfig::DEFAULT_PUG_CONFIG['cache'], $pug->getOption('cache'));
+        $this->assertSame(PugConfig::DEFAULT_PUG_CONFIG['expressionLanguage'], $pug->getOption('expressionLanguage'));
     }
 }
