@@ -3,8 +3,9 @@
 declare(strict_types=1);
 
 
-namespace Antidot\Render\Phug\Container;
+namespace AntidotTest\Render\Phug\Container;
 
+use Antidot\Render\Phug\Container\PugRendererFactory;
 use Antidot\Render\TemplateRenderer;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
@@ -15,7 +16,7 @@ class PugRendererFactoryTest extends TestCase
     /** @var \PHPUnit\Framework\MockObject\MockObject|ContainerInterface */
     private $container;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->container = $this->createMock(ContainerInterface::class);
         $this->container->expects($this->exactly(2))

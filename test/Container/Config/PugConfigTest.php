@@ -45,15 +45,15 @@ class PugConfigTest extends TestCase
     public function testItShouldMergeDefaultConfigWithUserGivenConfig(): void
     {
         $pugConfig = PugConfig::createFromAntidotConfig(self::PUG_CONFIG);
-        $this->assertEquals(self::TITLE, $pugConfig->get('globals')['title']);
-        $this->assertEquals(self::EXTENSION, $pugConfig->templates()['extension']);
+        $this->assertSame(self::TITLE, $pugConfig->get('globals')['title']);
+        $this->assertSame(self::EXTENSION, $pugConfig->templates()['extension']);
     }
 
     public function testItShouldMergeDefaultConfigWithUserGivenConfigAndTemplatingConfigShouldOverridePugConfig(): void
     {
         $pugConfig = PugConfig::createFromAntidotConfig(array_merge(self::TEMPLATING_CONFIG, self::PUG_CONFIG));
-        $this->assertEquals(self::OTHER_TITLE, $pugConfig->get('globals')['title']);
-        $this->assertEquals(self::EXTENSION, $pugConfig->templates()['extension']);
+        $this->assertSame(self::OTHER_TITLE, $pugConfig->get('globals')['title']);
+        $this->assertSame(self::EXTENSION, $pugConfig->templates()['extension']);
     }
 
     public function testItShouldThrowAnExceptionWhenCallingInExistentConfigKey(): void

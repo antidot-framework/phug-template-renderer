@@ -3,8 +3,9 @@
 declare(strict_types=1);
 
 
-namespace Antidot\Render\Phug;
+namespace AntidotTest\Render\Phug;
 
+use Antidot\Render\Phug\PugTemplateRenderer;
 use Antidot\Render\Phug\Container\Config\PugConfig;
 use PHPUnit\Framework\TestCase;
 use Pug;
@@ -14,7 +15,7 @@ class PugTemplateRendererTest extends TestCase
     /** @var \PHPUnit\Framework\MockObject\MockObject|Pug */
     private $pug;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->pug = $this->createMock(Pug::class);
     }
