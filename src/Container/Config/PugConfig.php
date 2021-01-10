@@ -29,17 +29,24 @@ class PugConfig implements JsonSerializable
     public const DEFAULT_TEMPLATE_CONFIG = [
         'extension' => 'pug',
     ];
-    /** @var array  */
+    /** @var array<mixed>  */
     private $config;
-    /** @var array  */
+    /** @var array<string>  */
     private $templates;
 
+    /**
+     * @param array<mixed> $config
+     * @param array<string> $templates
+     */
     private function __construct(array $config, array $templates)
     {
         $this->config = $config;
         $this->templates = $templates;
     }
 
+    /**
+     * @param array<mixed> $config
+     */
     public static function createFromAntidotConfig(array $config): self
     {
         $templates = self::DEFAULT_TEMPLATE_CONFIG;
@@ -60,6 +67,10 @@ class PugConfig implements JsonSerializable
         return new self($pugConfig, $templates);
     }
 
+    /**
+     * @param string $key
+     * @return mixed
+     */
     public function get(string $key)
     {
         if (false === array_key_exists($key, $this->config)) {
@@ -72,11 +83,17 @@ class PugConfig implements JsonSerializable
         return $this->config[$key];
     }
 
+    /**
+     * @return array<mixed>
+     */
     public function templates(): array
     {
         return $this->templates;
     }
 
+    /**
+     * @return array<mixed>
+     */
     public function jsonSerialize(): array
     {
         return $this->config;

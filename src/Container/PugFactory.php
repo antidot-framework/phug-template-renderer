@@ -31,7 +31,7 @@ final class PugFactory
         return $pug;
     }
 
-    private function addOns(Pug $pug, ContainerInterface $container, PugConfig $config)
+    private function addOns(Pug $pug, ContainerInterface $container, PugConfig $config): void
     {
         foreach (self::AVAILABLE_ADD_ONS as $method => $type) {
             foreach ($config->get($type) as $name => $callable) {
