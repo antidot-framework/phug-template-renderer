@@ -9,7 +9,10 @@ use Pug\Pug;
 
 class ConfigProvider
 {
-    public function __invoke()
+    /**
+     * @return array<mixed>
+     */
+    public function __invoke(): array
     {
         return [
             'dependencies' => $this->getDependencies(),
@@ -18,7 +21,10 @@ class ConfigProvider
         ];
     }
 
-    protected function getDependencies()
+    /**
+     * @return array<array<string, string>>
+     */
+    protected function getDependencies(): array
     {
         return [
             'factories' => [

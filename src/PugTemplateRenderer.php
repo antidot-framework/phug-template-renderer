@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Antidot\Render\Phug;
 
 use Antidot\Render\TemplateRenderer;
@@ -13,27 +15,22 @@ use function str_replace;
 class PugTemplateRenderer implements TemplateRenderer
 {
     public const DEFAULT_PATH = 'templates/';
-
-    /**
-     * @var Pug
-     */
+    /** @var Pug */
     private $pug;
-
-    /**
-     * @var string
-     */
+    /** @var string */
     private $path;
-
-    /**
-     * @var array
-     */
+    /** @var array<mixed> */
     private $globals;
-
-    /**
-     * @var array
-     */
+    /** @var array<mixed> */
     private $config;
 
+    /**
+     * PugTemplateRenderer constructor.
+     * @param Pug $pug
+     * @param array<mixed> $defaultParams
+     * @param array<mixed> $globals
+     * @param array<mixed> $config
+     */
     public function __construct(Pug $pug, array $defaultParams, array $globals, array $config)
     {
         $this->pug = $pug;
@@ -43,6 +40,9 @@ class PugTemplateRenderer implements TemplateRenderer
         $this->setDefaultParams($defaultParams);
     }
 
+    /**
+     * @param array<mixed> $defaultParams
+     */
     private function setDefaultParams(array $defaultParams): void
     {
         $this->globals = (array) array_replace_recursive($this->globals, $defaultParams);
@@ -50,7 +50,7 @@ class PugTemplateRenderer implements TemplateRenderer
 
     /**
      * @param string $name
-     * @param array $params
+     * @param array<mixed> $params
      * @return string
      */
     public function render(string $name, array $params = []) : string
@@ -69,10 +69,8 @@ class PugTemplateRenderer implements TemplateRenderer
      * Add a template path to the engine.
      *
      * Adds a template path
-     *
-     * @param string $path
      */
-    private function addPath(string $path) : void
+    private function addPath(?string $path) : void
     {
         $this->path = $path ?: self::DEFAULT_PATH;
     }
